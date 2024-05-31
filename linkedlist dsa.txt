@@ -1,0 +1,123 @@
+class LinkedList {
+    Node head;
+    int size = 0;
+
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+    public void append(int data) {
+        Node new_node = new Node(data);
+        if (head == null) {
+            head = new_node;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = new_node;
+        }
+        size++;
+    }
+    public void insertAtPos(int pos, int data) {
+        if (pos < 1 || pos > size + 1) {
+            System.out.println("change the position");
+            return;
+        }
+
+        Node new_node = new Node(data);
+        if (pos == 1) {
+            new_node.next = head;
+            head = new_node;
+        }
+        else {
+            Node temp = head;
+            for (int i = 1; i < pos - 1; i++){
+                temp = temp.next;
+            }
+            new_node.next = temp.next;
+            temp.next = new_node;
+        }
+        size++;
+    }
+
+    public void deleteAtPosition(int pos) {
+        if (pos < 1 || pos > size) {
+            System.out.println("change the position!");
+            return;
+        }
+
+        if (pos == 1) {
+            head = head.next;
+        }
+        else {
+            Node temp = head;
+            for (int i = 1; i < pos - 1; i++) {
+                temp = temp.next;
+            }
+            temp.next = temp.next.next;
+        }
+        size--;
+    }
+
+    public void deleteAfterNode(int data) {
+        Node current = head;
+        while (current != null && current.data != data) {
+            current = current.next;
+        }
+        if (current != null && current.next != null) {
+            current.next = current.next.next;
+        }
+        else {
+            System.out.println("Node with given data not found");
+        }
+    }
+
+    public boolean searchNode(int data) {
+        Node current = head;
+        while (current != null) {
+            if (current.data == data) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+    public void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+
+    }
+
+    public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.append(5);
+        linkedList.append(6);
+        linkedList.append(7);
+        linkedList.append(8);
+        linkedList.display();
+        linkedList.insertAtPos(3,10);
+        linkedList.display();
+        linkedList.deleteAtPosition(3);
+        linkedList.display();
+        linkedList.searchNode(7);
+        linkedList.deleteAfterNode(6);
+        linkedList.display();
+        
+
+
+
+
+
+    }
+}
