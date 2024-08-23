@@ -1,0 +1,17 @@
+class Solution(object):
+    def wateringPlants(self, plants, capacity):
+        """
+        :type plants: List[int]
+        :type capacity: int
+        :rtype: int
+        """
+        steps = 0
+        capac = capacity
+        for ind, water in enumerate (plants):
+            steps += 1
+            if capac < water:
+                steps += 2 * (ind)
+                capac = capacity
+            capac -= water
+                
+        return steps    
