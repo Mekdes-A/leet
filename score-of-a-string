@@ -1,0 +1,8 @@
+p1, p2 = 0, 1
+ans = 0
+while p1 < len(s) - 1 and p2 < len(s):
+    su = abs(ord(s[p1]) - ord(s[p2]))
+    ans += su
+    p1 += 1
+    p2 += 1
+return ans
