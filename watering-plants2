@@ -1,0 +1,27 @@
+class Solution(object):
+    def minimumRefill(self, plants, capacityA, capacityB):
+        """
+        :type plants: List[int]
+        :type capacityA: int
+        :type capacityB: int
+        :rtype: int
+        """
+        a, b, ca, cb= 0, len(plants) - 1, capacityA, capacityB
+        count = 0
+        while a <= b:
+            if a == b:
+                if ca < plants[a] and cb < plants[a]:
+                    count += 1
+                break
+            
+            if ca < plants[a]:
+                count += 1
+                ca = capacityA
+            if cb < plants[b]:
+                count += 1
+                cb = capacityB
+            ca -= plants[a]
+            cb -= plants[b]    
+            a += 1
+            b -= 1
+        return count  
