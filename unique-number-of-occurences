@@ -1,0 +1,17 @@
+class Solution(object):
+    def uniqueOccurrences(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: bool
+        """
+        cnt = {}
+        for num in arr:
+            cnt[num] = 1 + cnt.get(num, 0)
+        occurences = set()
+        for frq in cnt.values():
+            if frq in occurences:
+                return False
+            occurences.add(frq)    
+        return True    
+            
+            
