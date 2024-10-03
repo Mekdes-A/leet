@@ -1,0 +1,21 @@
+class Solution(object):
+    def findDifference(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[List[int]]
+        """
+        ans1 = []
+        ans2 = []
+        answer = []
+        li1 = set(nums1)
+        li2 = set(nums2)
+        for num in li1:
+            if num not in li2:
+                ans1.append(num)
+        for num in li2:
+            if num not in li1:
+                ans2.append(num)
+        answer.append(ans1)
+        answer.append(ans2)
+        return answer   
