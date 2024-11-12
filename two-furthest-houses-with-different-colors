@@ -1,0 +1,14 @@
+class Solution(object):
+    def maxDistance(self, colors):
+        """
+        :type colors: List[int]
+        :rtype: int
+        """
+        n = len(colors)
+        d = 0
+
+        for i in range(n):
+            distanceFromLeftMost = i if(colors[i] != colors[0]) else 0
+            distanceFromRightMost = (n-1-i) if(colors[i] != colors[n-1]) else 0
+            d = max(d, distanceFromLeftMost,distanceFromRightMost)   
+        return d
