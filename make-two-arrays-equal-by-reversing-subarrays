@@ -1,0 +1,15 @@
+class Solution(object):
+    def canBeEqual(self, target, arr):
+        """
+        :type target: List[int]
+        :type arr: List[int]
+        :rtype: bool
+        """
+        cnt = defaultdict(int)
+        for n1, n2 in zip(target, arr):
+            cnt[n1] += 1
+            cnt[n2] -= 1
+        for n in cnt:
+            if cnt[n] != 0:
+                return False
+        return True       
